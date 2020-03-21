@@ -3,7 +3,7 @@ const fs = require("fs");
 
 const dataPath = path.join(__dirname, "../chirps.json");
 
-let arr = [
+let chirps = [
   { author: "Simmon", body: "Let's play corners!" },
   { author: "Wilem", body: "You're a dreadful partner." },
   { author: "Simmon", body: "Oh, please. I can play well enough." },
@@ -11,7 +11,7 @@ let arr = [
   { author: "Kvothe", body: "I could play a round. Who will be our fourth?" }
 ];
 
-fs.writeFile(dataPath, arr, err => {
+fs.writeFileSync(dataPath, chirps, err => {
   if (err) console.log(err);
 });
 
@@ -20,8 +20,8 @@ fs.readFile(
   {
     encoding: "UTF-8"
   },
-  (err, data) => {
-    arr.forEach(post => {
+  () => {
+    chirps.forEach(post => {
       console.log(`${post.body} \n -${post.author} \n`);
     });
   }
